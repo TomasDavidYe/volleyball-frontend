@@ -1,0 +1,15 @@
+<h1>This is the volleyball app</h1>
+<router-outlet></router-outlet>
+<div>
+    <span>First Name</span>
+    <input [(ngModel)]="model.first_name" placeholder="Enter first name...">
+</div>
+<div>
+    <span>Last Name</span>
+    <input [(ngModel)]="model.last_name" placeholder="Enter last name...">
+</div>
+<div>
+    <span>Occupation</span>
+    <input [(ngModel)]="model.occupation" placeholder="Enter occupation...">        
+</div>
+<button (click)="submit()">Submit</button>
