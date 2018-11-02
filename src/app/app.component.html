@@ -1,15 +1,33 @@
-<h1>This is the volleyball app</h1>
-<router-outlet></router-outlet>
-<div>
-    <span>First Name</span>
-    <input [(ngModel)]="model.first_name" placeholder="Enter first name...">
-</div>
-<div>
-    <span>Last Name</span>
-    <input [(ngModel)]="model.last_name" placeholder="Enter last name...">
-</div>
-<div>
-    <span>Occupation</span>
-    <input [(ngModel)]="model.occupation" placeholder="Enter occupation...">        
-</div>
-<button (click)="submit()">Submit</button>
+<!-- <h1>Arcus Volleyball Crew</h1>
+<img height="300" src="../assets/resources/home-image.jpeg"> -->
+
+
+<nz-layout class="layout">
+    <nz-header>
+        <h1 class="title">Arcus Volleyball Crew</h1>
+    </nz-header>
+    <nz-layout>
+      <nz-sider [nzWidth]="200" style="background:#fff">
+        <ul nz-menu [nzMode]="'inline'" style="height:100%">
+          <li nz-menu-item nz-tooltip nzPlacement="right" (click)="navigateTo('home')">
+            <span title><i nz-icon type="home" ></i>Home</span>            
+          </li>
+          <li nz-menu-item nz-tooltip nzPlacement="right" (click)="navigateTo('players')">
+            <span title><i nz-icon type="user"></i>Players</span>            
+          </li>
+          <li nz-menu-item nz-tooltip nzPlacement="right" (click)="navigateTo('matches')">
+            <span title><i nz-icon type="trophy"></i>Matches</span>
+          </li>
+          <li nz-menu-item nz-tooltip nzPlacement="right" (click)="navigateTo('statistics')">
+            <span title><i nz-icon type="area-chart"></i>Statistics</span>
+          </li>
+        </ul>
+      </nz-sider>
+      <nz-layout>
+    
+        <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
+            <router-outlet></router-outlet>
+        </nz-content>
+      </nz-layout>
+    </nz-layout>
+  </nz-layout>

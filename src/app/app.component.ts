@@ -15,11 +15,19 @@ export class AppComponent {
         occupation: '',
     }
     constructor(private router: Router, private route: ActivatedRoute, private http: Http){}
+    
 
     submit(){
-        console.log(this.model)
-        this.http.post('http://localhost:5000/post-something',this.model).subscribe(response => {
+        let a: Response
+        console.log('sending request')
+        this.http.post('http://localhost:5000/post-something',this.model).pipe(map(response => response.text())).subscribe(response => {
             console.log(response)
         })
     }
+
+    navigateTo(path: string){
+        const url: string = '/' + path;
+        this.router.navigate([url]);
+    }
+
 }
