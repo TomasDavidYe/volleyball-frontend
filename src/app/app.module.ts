@@ -4,7 +4,7 @@ import { RouterModule, Routes} from '@angular/router'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from  '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from  '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
@@ -37,6 +37,8 @@ const routes: Routes = [
     HttpModule,
     FormsModule,
     RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     NgZorroAntdModule

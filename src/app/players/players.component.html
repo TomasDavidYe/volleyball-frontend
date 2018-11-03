@@ -1,3 +1,24 @@
-<p>
-  players works!
-</p>
+<button nz-button nzType="primary" nzBlock (click)="toggleFormCollapse()">ADD NEW PLAYER</button>
+<div [style.display]="displayForm? 'block' : 'none'">
+        <form nz-form class="ant-advanced-search-form" [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+            <nz-form-item>
+                 <nz-form-label [nzSm]="6" [nzXs]="24">Nickname</nz-form-label>
+                 <nz-form-control [nzSm]="14" [nzXs]="24">
+                          <input nz-input formControlName="nickname">
+                 </nz-form-control>
+            </nz-form-item> 
+            <nz-form-item>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" >Sex</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24">
+                             <input nz-input formControlName="sex">
+                    </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" >Address</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24">
+                             <input nz-input formControlName="address">
+                    </nz-form-control>
+               </nz-form-item>    
+               <button nz-button nzType="primary" type="submit">SUBMIT</button> 
+        </form>
+</div>
