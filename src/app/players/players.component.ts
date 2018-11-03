@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators'
+import { Player } from '../data-classes';
+import { DataService } from '../services/data-service'
 
 @Component({
   selector: 'app-players',
@@ -10,10 +12,11 @@ import { map } from 'rxjs/operators'
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
-
   playerForm: FormGroup;
   displayForm: boolean;
-  constructor(private fb: FormBuilder, private http: Http) { }
+  tableLoading: boolean;
+  players: Player[];
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.displayForm = false;
@@ -22,17 +25,33 @@ export class PlayersComponent implements OnInit {
         sex: new FormControl(''),
         address: new FormControl('')
     })
+    this.players = new Array<Player>();
+    this.tableLoading = true;
+    this.loadTable()
   }
 
   toggleFormCollapse(){
     this.displayForm = !this.displayForm;
   }
 
+  loadTable(){
+    console.log("loading table")
+    this.dataService.getAllPlayersFromDB().subscribe(items => {
+        items.forEach(item => {
+            const player = new Player(item[1], item[2], item[3]);
+            this.players.push(player)
+        });
+        console.log(this.players)
+        this.players = this.players.slice(0)
+        this.tableLoading = false;
+    })
+  }
+
   onSubmit(){
-      this.http.post('http://localhost:5000/store-user', this.playerForm.value)
-      .pipe(map(response => response.text()))
-      .subscribe(text => location.reload());
-      
+      this.dataService.addPlayerToDB(this.playerForm.value)      
+  }
+  testClick(){
+      console.log(this.players)
   }
 
 }

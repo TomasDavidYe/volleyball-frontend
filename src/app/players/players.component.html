@@ -1,24 +1,46 @@
-<button nz-button nzType="primary" nzBlock (click)="toggleFormCollapse()">ADD NEW PLAYER</button>
-<div [style.display]="displayForm? 'block' : 'none'">
-        <form nz-form class="ant-advanced-search-form" [formGroup]="playerForm" (ngSubmit)="onSubmit()">
-            <nz-form-item>
-                 <nz-form-label [nzSm]="6" [nzXs]="24">Nickname</nz-form-label>
-                 <nz-form-control [nzSm]="14" [nzXs]="24">
-                          <input nz-input formControlName="nickname">
-                 </nz-form-control>
-            </nz-form-item> 
-            <nz-form-item>
-                    <nz-form-label [nzSm]="6" [nzXs]="24" >Sex</nz-form-label>
-                    <nz-form-control [nzSm]="14" [nzXs]="24">
-                             <input nz-input formControlName="sex">
-                    </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-                    <nz-form-label [nzSm]="6" [nzXs]="24" >Address</nz-form-label>
-                    <nz-form-control [nzSm]="14" [nzXs]="24">
-                             <input nz-input formControlName="address">
-                    </nz-form-control>
-               </nz-form-item>    
-               <button nz-button nzType="primary" type="submit">SUBMIT</button> 
-        </form>
+<button nz-button nzType="primary" (click)="testClick()">TEST</button>
+<div class="player-table">
+    <nz-table #basicTable [nzLoading]="tableLoading"[nzData]="players">
+        <thead>
+            <tr>
+                <th>Nickname</th>
+                <th>Sex</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of basicTable.data">
+                <td>{{player.nickname}}</td>
+                <td>{{player.sex}}</td>
+                <td>{{player.address}}</td>
+                <td>
+                    <a>Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
+<button nz-button nzType="primary" nzBlock (click)="toggleFormCollapse()">{{displayForm? 'CANCEL' : 'ADD NEW PLAYER' }}</button>
+<div [style.display]="displayForm? 'block' : 'none'" class="new-player-form">
+    <form nz-form class="ant-advanced-search-form" [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24">Nickname</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input nz-input formControlName="nickname">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24">Sex</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input nz-input formControlName="sex">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24">Address</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input nz-input formControlName="address">
+            </nz-form-control>
+        </nz-form-item>
+        <button nz-button nzType="primary" type="submit">SUBMIT</button>
+    </form>
 </div>

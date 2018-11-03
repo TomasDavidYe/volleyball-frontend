@@ -13,6 +13,7 @@ import en from '@angular/common/locales/en';
 import { PlayersComponent } from './players/players.component';
 import { MatchesComponent } from './matches/matches.component';
 import { StatisticsComponent } from './statistics/statistics.component'
+import { DataService } from './services/data-service';
 
 registerLocaleData(en);
 
@@ -44,7 +45,7 @@ const routes: Routes = [
     NgZorroAntdModule
   ],
   providers: [
-  { provide: NZ_I18N, useValue: en_US }],
+  { provide: NZ_I18N, useValue: en_US }, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
