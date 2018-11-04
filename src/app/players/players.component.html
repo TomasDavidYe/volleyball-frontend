@@ -14,7 +14,7 @@
                 <td>{{player.sex}}</td>
                 <td>{{player.address}}</td>
                 <td>
-                    <a>Delete</a>
+                    <a (click)="onDelete(player.id)">Delete</a>
                 </td>
             </tr>
         </tbody>
